@@ -1,3 +1,5 @@
+require_relative 'browser_builder/selenium_chrome_builder'
+
 module Kimurai
   module BrowserBuilder
     def self.build(engine, config = {}, spider:)

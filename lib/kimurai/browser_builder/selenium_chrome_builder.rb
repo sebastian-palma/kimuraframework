@@ -109,6 +109,11 @@ module Kimurai::BrowserBuilder
           end
         end
 
+        # Device emulation
+        if emulation = @config.dig(:emulation, :device_name).presence
+          driver_options.add_emulation(@config[:emulation])
+        end
+
         chromedriver_path = Kimurai.configuration.chromedriver_path || "/usr/local/bin/chromedriver"
         service = Selenium::WebDriver::Service.chrome(path: chromedriver_path)
         Capybara::Selenium::Driver.new(app, browser: :chrome, options: driver_options, service: service)
